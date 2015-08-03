@@ -315,7 +315,7 @@ class ModelConditionSet(ConditionSet):
         return '%s.%s(%s)' % (self.__module__, self.__class__.__name__, self.get_namespace())
 
     def get_namespace(self):
-        return '%s.%s' % (self.model._meta.app_label, self.model._meta.module_name)
+        return '%s.%s' % (self.model._meta.app_label, self.model._meta.model_name)
 
     def get_group_label(self):
         return self.model._meta.verbose_name.title()
