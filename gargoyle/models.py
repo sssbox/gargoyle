@@ -68,6 +68,7 @@ class Switch(models.Model):
         )
         verbose_name = _('switch')
         verbose_name_plural = _('switches')
+        app_label = 'gargoyle'
 
     def __init__(self, *args, **kwargs):
         if (
