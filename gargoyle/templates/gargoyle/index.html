@@ -1,8 +1,6 @@
 {% extends "nexus/module.html" %}
 
 {% load gargoyle_helpers %}
-{% load url from future %}
-
 {% block head %}
     {{ block.super }}
     <link rel="stylesheet" href="{% url 'nexus:media' 'gargoyle' 'css/gargoyle.css' %}">
