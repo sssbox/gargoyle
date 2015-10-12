@@ -59,6 +59,11 @@ class SwitchContextManager(object):
             is_active_func = gargoyle.is_active
 
             def wrapped(key, *args, **kwargs):
+
+                # check for varchar(64)
+                if len(key) > 64:
+                    raise ValueError('Gargoyle key can be max 64 chars, was: %s' % len(key))
+
                 if key in self.keys:
                     return self.keys[key]
                 return is_active_func(key, *args, **kwargs)

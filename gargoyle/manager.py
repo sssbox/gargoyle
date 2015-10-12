@@ -41,6 +41,11 @@ class SwitchManager(ModelDict):
 
         >>> gargoyle.is_active('my_feature', request)
         """
+
+        # check for varchar(64)
+        if len(key) > 64:
+            raise ValueError('Gargoyle key can be max 64 chars, was: %s' % len(key))
+
         default = kwargs.pop('default', False)
 
         # Check all parents for a disabled state
