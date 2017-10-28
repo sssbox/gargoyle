@@ -17,5 +17,12 @@ if django.VERSION[:2] >= (1, 9):
 else:
     from django.conf.urls import include as subinclude
 
+# Django 2.0
+
+try:
+    from django.urls import reverse  # noqa pragma: no cover
+except ImportError:
+    from django.core.urlresolvers import reverse  # noqa pragma: no cover
+
 
 __all__ = ['ContextDecorator', 'subinclude']

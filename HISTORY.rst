@@ -9,6 +9,7 @@ Pending Release
 
 * New release notes here
 * Added missing argument message and documents for management commands
+* Django 2.0b1 support
 
 1.2.7 (2016-12-01)
 ------------------

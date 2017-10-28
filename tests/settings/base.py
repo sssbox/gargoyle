@@ -3,6 +3,8 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import os
 
+import django
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
@@ -35,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 )
 
-MIDDLEWARE_CLASSES = (
+middlewares = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -43,6 +45,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+if django.VERSION >= (1, 10):
+    MIDDLEWARE = middlewares
+else:
+    MIDDLEWARE_CLASSES = middlewares
 
 ROOT_URLCONF = 'urls'
 LANGUAGE_CODE = 'en-us'
