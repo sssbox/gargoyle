@@ -8,6 +8,10 @@ Pending Release
 ---------------
 
 * New release notes here
+
+1.3.0 (2017-10-28)
+------------------
+
 * Added missing argument message and documents for management commands
 * Django 2.0b1 support
 
