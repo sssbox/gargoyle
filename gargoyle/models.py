@@ -107,7 +107,7 @@ class Switch(models.Model):
                 last = {
                     'id': condition_set_id,
                     'label': group,
-                    'conditions': []
+                    'conditions': [],
                 }
 
             last['conditions'].append((field.name, value, field.display(value), exclude))

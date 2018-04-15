@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(null=True)),
                 ('status', models.PositiveSmallIntegerField(
                     default=1,
-                    choices=[(1, b'Disabled'), (2, b'Selective'), (3, b'Global'), (4, b'Inherit')]
+                    choices=[(1, b'Disabled'), (2, b'Selective'), (3, b'Global'), (4, b'Inherit')],
                 )),
             ],
             options={

@@ -128,7 +128,7 @@ class Range(Field):
             '<input type="text" placeholder="to" value="{value_to}" name="{name}[max]"/>%',
             value_form=value[0],
             value_to=value[1],
-            name=self.name
+            name=self.name,
         )
 
     def display(self, value):

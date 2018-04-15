@@ -46,7 +46,7 @@ setup(
     extras_require={
         ':python_version=="2.7"': [
             'contextdecorator',
-        ]
+        ],
     },
     license='Apache License 2.0',
     include_package_data=True,
@@ -70,6 +70,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python',
-        'Topic :: Software Development'
+        'Topic :: Software Development',
     ],
 )

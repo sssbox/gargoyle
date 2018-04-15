@@ -11,7 +11,7 @@ from freezegun import freeze_time
 
 from gargoyle.builtins import (
     ActiveTimezoneTodayConditionSet, AppTodayConditionSet, HostConditionSet, IPAddressConditionSet,
-    UTCTodayConditionSet
+    UTCTodayConditionSet,
 )
 from gargoyle.manager import SwitchManager
 from gargoyle.models import SELECTIVE, Switch

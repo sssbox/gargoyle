@@ -18,7 +18,7 @@ class Command(BaseCommand):
         if not User.objects.exists():
             self.stdout.write(
                 "Welcome to Gargoyle test mode\n"
-                "Login with username 'admin', password 'password'"
+                "Login with username 'admin', password 'password'",
             )
             user = User(username='admin', is_superuser=True, is_staff=True)
             user.set_password('password')

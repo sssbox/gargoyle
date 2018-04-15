@@ -40,17 +40,17 @@ def json_view(func):
         try:
             response = {
                 "success": True,
-                "data": func(self, request, *args, **kwargs)
+                "data": func(self, request, *args, **kwargs),
             }
         except GargoyleException as exc:
             response = {
                 "success": False,
-                "data": exc.message
+                "data": exc.message,
             }
         except Switch.DoesNotExist:
             response = {
                 "success": False,
-                "data": "Switch cannot be found"
+                "data": "Switch cannot be found",
             }
         except ValidationError as e:
             response = {
@@ -106,7 +106,7 @@ class GargoyleModule(nexus.NexusModule):
         return self.render_to_response("gargoyle/index.html", {
             "switches": [s.to_dict(gargoyle) for s in switches],
             "all_conditions": list(gargoyle.get_all_conditions()),
-            "sorted_by": sort_by
+            "sorted_by": sort_by,
         }, request)
 
     @json_view
@@ -126,17 +126,17 @@ class GargoyleModule(nexus.NexusModule):
 
         switch, created = Switch.objects.get_or_create(
             key=key,
-            defaults=dict(
-                label=label or None,
-                description=request.POST.get("desc")
-            )
+            defaults={
+                'label': label or None,
+                'description': request.POST.get('desc'),
+            },
         )
 
         if not created:
             raise GargoyleException("Switch with key %s already exists" % key)
 
         logger.info('Switch %r added (%%s)' % switch.key,
-                    ', '.join('%s=%r' % (k, getattr(switch, k)) for k in sorted(('key', 'label', 'description', ))))
+                    ', '.join('%s=%r' % (k, getattr(switch, k)) for k in sorted(('key', 'label', 'description'))))
 
         signals.switch_added.send(
             sender=self,

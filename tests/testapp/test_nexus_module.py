@@ -67,10 +67,12 @@ class NexusModuleTestCase(TestCase):
 
         resp = self.client.post(
             '/nexus/gargoyle/conditions/add/',
-            {'key': 'key1',
-             'id': 'gargoyle.builtins.IPAddressConditionSet',
-             'field': 'ip_address',
-             'ip_address': '1.1.1.1'}
+            {
+                'key': 'key1',
+                'id': 'gargoyle.builtins.IPAddressConditionSet',
+                'field': 'ip_address',
+                'ip_address': '1.1.1.1',
+            },
         )
         assert resp.status_code == 200
         body = json.loads(resp.content.decode('utf-8'))
@@ -86,10 +88,12 @@ class NexusModuleTestCase(TestCase):
 
         resp = self.client.post(
             '/nexus/gargoyle/conditions/remove/',
-            {'key': 'key1',
-             'id': 'gargoyle.builtins.IPAddressConditionSet',
-             'field': 'ip_address',
-             'value': '1.1.1.1'}
+            {
+                'key': 'key1',
+                'id': 'gargoyle.builtins.IPAddressConditionSet',
+                'field': 'ip_address',
+                'value': '1.1.1.1',
+            },
         )
         assert resp.status_code == 200
         body = json.loads(resp.content.decode('utf-8'))

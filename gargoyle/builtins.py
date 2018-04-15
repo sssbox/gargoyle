@@ -19,7 +19,7 @@ from django.utils import timezone
 
 from gargoyle import gargoyle
 from gargoyle.conditions import (
-    BeforeDate, Boolean, ConditionSet, ModelConditionSet, OnOrAfterDate, Percent, RequestConditionSet, String
+    BeforeDate, Boolean, ConditionSet, ModelConditionSet, OnOrAfterDate, Percent, RequestConditionSet, String,
 )
 
 User = get_user_model()

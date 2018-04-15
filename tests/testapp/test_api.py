@@ -158,7 +158,7 @@ class APITest(TestCase):
             condition_set=condition_set,
             field_name='username',
             condition='bar',
-            exclude=True
+            exclude=True,
         )
 
         user = User(pk=0, username='foo', is_staff=False)
@@ -185,7 +185,7 @@ class APITest(TestCase):
             condition_set=condition_set,
             field_name='username',
             condition='bar',
-            exclude=True
+            exclude=True,
         )
 
         # username=='foo', so should be active

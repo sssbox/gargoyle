@@ -20,7 +20,7 @@ class Command(BaseCommand):
         switch, created = Switch.objects.get_or_create(
             key=options['switch_name'],
             defaults={
-                'status': options['status']
+                'status': options['status'],
             },
         )
         if not created and switch.status != options['status']:
