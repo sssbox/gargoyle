@@ -26,7 +26,7 @@ pygments==2.2.0
 pytest-cov==2.5.1
 pytest-django==3.2.1
 pytest==3.5.1
-python-dateutil==2.7.2    # via freezegun
+python-dateutil==2.7.3    # via freezegun
 pytz==2018.4
 six==1.11.0               # via freezegun, more-itertools, multilint, pytest, python-dateutil
 sqlparse==0.2.4
