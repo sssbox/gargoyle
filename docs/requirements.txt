@@ -1,4 +1,4 @@
--r ../tests/requirements.txt
+-r ../requirements.txt
 django-modeldict-yplan
 Django
 nexus-yplan
