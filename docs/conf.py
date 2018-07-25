@@ -24,8 +24,10 @@ project_root = os.path.dirname(cwd)
 # version is used.
 sys.path.insert(0, project_root)
 
+import django
 from django.conf import settings  # noqa
 settings.configure()
+django.setup()
 
 import gargoyle  # noqa
 
