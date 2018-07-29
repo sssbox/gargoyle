@@ -27,9 +27,9 @@ setup(
     version=version,
     author='DISQUS',
     author_email='opensource@disqus.com',
-    maintainer='YPlan',
-    maintainer_email='adam@yplanapp.com',
-    url='https://github.com/YPlan/gargoyle',
+    maintainer='Adam Johnson',
+    maintainer_email='me@adamj.eu',
+    url='https://github.com/adamchainz/gargoyle',
     description=(
         'Gargoyle is a platform built on top of Django which allows you to switch functionality of your application '
         'on and off based on conditions.'
