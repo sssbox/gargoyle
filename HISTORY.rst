@@ -7,6 +7,11 @@ History
 Pending Release
 ---------------
 
+.. Add new release notes below this line.
+
+1.4.0 (2018-08-05)
+------------------
+
 * Added ``initial_status`` option to ``GARGOYLE_SWITCH_DEFAULTS``
 
 1.3.0 (2017-10-28)
