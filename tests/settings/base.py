@@ -88,7 +88,7 @@ GARGOYLE_SWITCH_DEFAULTS = {
         'description': 'Controls the funkiness.',
     },
     'selective_by_default': {
-        'initial_status': 2,
+        'initial_status': 2,  # SELECTIVE - import error on Django 1.8 prevents us importing from gargoyle.constants
         'label': 'Default Inactive',
         'description': 'Controls more funkiness.',
     },

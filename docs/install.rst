@@ -68,21 +68,16 @@ Default Switch States
 ~~~~~~~~~~~~~~~~~~~~~
 
 The ``GARGOYLE_SWITCH_DEFAULTS`` setting allows engineers to set the default state of a switch before it's been added
-via the gargoyle admin interface. The ``is_active`` value will set the switch to either GLOBAL or DISABLED, while the
-``initial_status`` value can explicitly set any switch status (DISABLED, SELECTIVE, GLOBAL, INHERIT).
-In your ``settings.py`` add something like:
+via the gargoyle admin interface. Set the ``initial_status`` value to set it to a specific switch status - one of
+``DISABLED``, ``SELECTIVE``, ``GLOBAL``, or ``INHERIT``. You can also use the legacy key ``is_active``, with value
+``True`` to make it ``GLOBAL``, and ``False`` to make it ``DISABLED``. For example:
 
 .. code-block:: python
-    from gargoyle.constants import SELECTIVE
+    from gargoyle.constants import DISABLED, SELECTIVE
 
     GARGOYLE_SWITCH_DEFAULTS = {
         'new_switch': {
-          'is_active': True,
-          'label': 'New Switch',
-          'description': 'When you want the newness',
-        },
-        'funky_switch': {
-          'initial_status': False,
+          'initial_status': DISABLED,
           'label': 'Funky Switch',
           'description': 'Controls the funkiness.',
         },
@@ -90,6 +85,11 @@ In your ``settings.py`` add something like:
           'initial_status': SELECTIVE,
           'label': 'Conditional Funky Switch',
           'description': 'Controls more funkiness.',
+        },
+        'deprecated_format_new_switch': {
+          'is_active': True,
+          'label': 'Old funkiness',
+          'description': 'Defaults on but should really use initial_status=GLOBAL',
         },
     }
 

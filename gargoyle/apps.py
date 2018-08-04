@@ -1,6 +1,9 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 from django.apps import AppConfig
+from django.core import checks
+
+from gargoyle.checks import check_switch_defaults
 
 
 class GargoyleAppConfig(AppConfig):
@@ -8,5 +11,5 @@ class GargoyleAppConfig(AppConfig):
     verbose_name = 'Gargoyle'
 
     def ready(self):
-        from gargoyle.checks import check_default_switch_status
+        checks.register(check_switch_defaults)
         self.module.autodiscover()
