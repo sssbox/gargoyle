@@ -101,6 +101,38 @@ A parent switch that has its status set to 'inherit' will return the default val
     Currently inheritance does not combine filters. If your child defines *any* filters, they will override all of the
     parents.
 
+ConditionSets
+~~~~~~~~~~~~~
+
+Use built-in or custom condition sets for more complex checking on switches with the SELECTIVE status.
+
+.. code-block:: python
+
+    from gargoyle.builtins import UserConditionSet
+    from gargoyle import gargoyle
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+
+    # 'new_feature' must be an existing switch with a status of SELECTIVE
+    switch = gargoyle['new_feature']
+    condition_set = UserConditionSet(User)
+
+    # NOTE: there is no duplicate checking for conditions, so be sure your application checks or removes conditions first
+    switch.add_condition(
+        condition_set=condition_set.get_id(),
+        field_name='is_superuser',
+        condition='True'
+    )
+
+    admin_user = User(username='admin', is_superuser=True)
+    normal_user = User(username='nobody')
+
+    gargoyle.is_active('new_feature', admin_user)
+    >>> True
+    gargoyle.is_active('new_feature', normal_user)
+    >>> False
+
+
 Testing Switches
 ~~~~~~~~~~~~~~~~
 
