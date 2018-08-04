@@ -7,7 +7,10 @@
 atomicwrites==1.1.5       # via pytest
 attrs==18.1.0             # via pytest
 configparser==3.5.0       # via flake8
+contextdecorator==0.10.0
 coverage==4.5.1           # via pytest-cov
+django-jsonfield==1.0.1
+django-modeldict-yplan==1.5.4
 docutils==0.14
 enum34==1.1.6             # via flake8
 flake8-commas==2.0.0
@@ -19,6 +22,7 @@ isort==4.3.4
 mccabe==0.6.1             # via flake8
 more-itertools==4.3.0     # via pytest
 multilint==2.3.0
+nexus-yplan==1.6.0
 pathlib2==2.3.2           # via pytest
 pluggy==0.7.1             # via pytest
 py==1.5.4                 # via pytest

@@ -1,3 +1,6 @@
+contextdecorator
+django-jsonfield>=0.9.2,!=0.9.13,!=1.0.0
+django-modeldict-yplan>=1.5.0
 docutils
 flake8
 flake8-commas
@@ -5,10 +8,11 @@ freezegun
 futures<3.2.0
 isort
 multilint
+nexus-yplan>=1.6.0
 Pygments
-pytz
 pytest
 pytest-cov
 pytest-django
+pytz
 pytz
 sqlparse
