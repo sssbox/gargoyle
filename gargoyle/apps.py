@@ -8,4 +8,5 @@ class GargoyleAppConfig(AppConfig):
     verbose_name = 'Gargoyle'
 
     def ready(self):
+        from gargoyle.checks import check_default_switch_status
         self.module.autodiscover()

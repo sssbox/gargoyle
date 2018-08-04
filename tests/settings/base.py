@@ -87,4 +87,9 @@ GARGOYLE_SWITCH_DEFAULTS = {
         'label': 'Default Inactive',
         'description': 'Controls the funkiness.',
     },
+    'selective_by_default': {
+        'initial_status': 2,
+        'label': 'Default Inactive',
+        'description': 'Controls more funkiness.',
+    },
 }
