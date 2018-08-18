@@ -24,13 +24,14 @@ more-itertools==4.3.0     # via pytest
 multilint==2.3.0
 nexus-yplan==1.6.0
 pathlib2==2.3.2           # via pytest
+pathlib==1.0.1            # via pytest-django
 pluggy==0.7.1             # via pytest
 py==1.5.4                 # via pytest
 pycodestyle==2.3.1        # via flake8
 pyflakes==1.6.0           # via flake8
 pygments==2.2.0
 pytest-cov==2.5.1
-pytest-django==3.3.3
+pytest-django==3.4.1
 pytest==3.7.1
 python-dateutil==2.7.3    # via freezegun
 pytz==2018.5
