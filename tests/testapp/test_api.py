@@ -161,6 +161,24 @@ class APITest(TestCase):
             exclude=True,
         )
 
+        # Duplicate switch shouldn't be created
+        switch.add_condition(
+            condition_set=condition_set,
+            field_name='username',
+            condition='bar',
+            exclude=True,
+        )
+
+        # Conflicting switch shouldn't be created
+        switch.add_condition(
+            condition_set=condition_set,
+            field_name='username',
+            condition='bar',
+            exclude=False,
+        )
+
+        assert len(switch._switch.value['auth.user']['username']) == 2
+
         user = User(pk=0, username='foo', is_staff=False)
         assert self.gargoyle.is_active('test', user)
 

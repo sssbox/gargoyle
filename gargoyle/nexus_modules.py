@@ -247,10 +247,16 @@ class GargoyleModule(nexus.NexusModule):
         if not all([key, condition_set_id, field_name]):
             raise GargoyleException("Fields cannot be empty")
 
-        field = gargoyle.get_condition_set_by_id(condition_set_id).fields[field_name]
+        condition_set = gargoyle.get_condition_set_by_id(condition_set_id)
+        namespace = condition_set.get_namespace()
+        field = condition_set.fields[field_name]
         value = field.validate(request.POST)
 
         switch = gargoyle[key]
+
+        if value in (c for _, c in switch._switch.value[namespace][field_name]):
+            raise GargoyleException("Conditions cannot conflict with or duplicate existing conditions")
+
         switch.add_condition(condition_set_id, field_name, value, exclude=exclude)
 
         logger.info('Condition added to %r (%r, %s=%r, exclude=%r)' % (switch.key,
