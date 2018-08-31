@@ -118,6 +118,15 @@ class Switch(models.Model):
 
         return data
 
+    def can_add_condition(self, namespace, field_name, condition):
+        if namespace not in self.value:
+            self.value[namespace] = {}
+        if field_name not in self.value[namespace]:
+            self.value[namespace][field_name] = []
+        if condition not in (c for _, c in self.value[namespace][field_name]):
+            return True
+        return False
+
     def add_condition(self, manager, condition_set, field_name, condition, exclude=False, commit=True):
         """
         Adds a new condition and registers it in the global ``gargoyle`` switch manager.
@@ -134,11 +143,7 @@ class Switch(models.Model):
 
         namespace = condition_set.get_namespace()
 
-        if namespace not in self.value:
-            self.value[namespace] = {}
-        if field_name not in self.value[namespace]:
-            self.value[namespace][field_name] = []
-        if condition not in (c for _, c in self.value[namespace][field_name]):
+        if self.can_add_condition(namespace, field_name, condition):
             self.value[namespace][field_name].append((exclude and EXCLUDE or INCLUDE, condition))
 
         if commit:

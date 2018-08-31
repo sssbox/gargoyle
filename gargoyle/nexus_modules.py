@@ -254,7 +254,7 @@ class GargoyleModule(nexus.NexusModule):
 
         switch = gargoyle[key]
 
-        if value in (c for _, c in switch._switch.value[namespace][field_name]):
+        if not switch.can_add_condition(namespace, field_name, value):
             raise GargoyleException("Conditions cannot conflict with or duplicate existing conditions")
 
         switch.add_condition(condition_set_id, field_name, value, exclude=exclude)
