@@ -123,9 +123,8 @@ class Switch(models.Model):
             self.value[namespace] = {}
         if field_name not in self.value[namespace]:
             self.value[namespace][field_name] = []
-        if condition not in (c for _, c in self.value[namespace][field_name]):
-            return True
-        return False
+        conditions = [c for _, c in self.value[namespace][field_name]]
+        return condition not in conditions
 
     def add_condition(self, manager, condition_set, field_name, condition, exclude=False, commit=True):
         """

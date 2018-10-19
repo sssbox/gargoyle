@@ -161,24 +161,6 @@ class APITest(TestCase):
             exclude=True,
         )
 
-        # Duplicate switch shouldn't be created
-        switch.add_condition(
-            condition_set=condition_set,
-            field_name='username',
-            condition='bar',
-            exclude=True,
-        )
-
-        # Conflicting switch shouldn't be created
-        switch.add_condition(
-            condition_set=condition_set,
-            field_name='username',
-            condition='bar',
-            exclude=False,
-        )
-
-        assert len(switch._switch.value['auth.user']['username']) == 2
-
         user = User(pk=0, username='foo', is_staff=False)
         assert self.gargoyle.is_active('test', user)
 
@@ -189,6 +171,52 @@ class APITest(TestCase):
         assert not self.gargoyle.is_active('test', user)
 
         user = User(pk=0, username='bar', is_staff=True)
+        assert not self.gargoyle.is_active('test', user)
+
+    def test_exclusion_duplicate(self):
+        condition_set = 'gargoyle.builtins.UserConditionSet(auth.user)'
+
+        switch = Switch.objects.create(key='test', status=SELECTIVE)
+        switch = self.gargoyle['test']
+
+        switch.add_condition(
+            condition_set=condition_set,
+            field_name='username',
+            condition='bar',
+            exclude=True,
+        )
+        switch.add_condition(
+            condition_set=condition_set,
+            field_name='username',
+            condition='bar',
+            exclude=True,
+        )
+        assert len(switch._switch.value['auth.user']['username']) == 1
+
+    def test_exclusion_conflicting(self):
+        condition_set = 'gargoyle.builtins.UserConditionSet(auth.user)'
+
+        switch = Switch.objects.create(key='test', status=SELECTIVE)
+        switch = self.gargoyle['test']
+
+        switch.add_condition(
+            condition_set=condition_set,
+            field_name='username',
+            condition='bar',
+            exclude=True,
+        )
+        switch.add_condition(
+            condition_set=condition_set,
+            field_name='username',
+            condition='bar',
+            exclude=False,
+        )
+        assert len(switch._switch.value['auth.user']['username']) == 1
+
+        user = User(pk=0, username='foo')
+        assert self.gargoyle.is_active('test', user)
+
+        user = User(pk=0, username='bar')
         assert not self.gargoyle.is_active('test', user)
 
     def test_only_exclusions(self):
